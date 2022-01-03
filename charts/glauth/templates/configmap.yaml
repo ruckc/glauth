@@ -1,0 +1,13 @@
+{{ $ldaps := fromYaml ( include "glauth.ldaps-certs" . ) }}
+{{ $api := fromYaml ( include "glauth.api-certs" . ) }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "glauth.namePrefix" . }}-ca
+  namespace: {{ .Release.Namespace }}
+  labels:
+{{ include "glauth.labels" . | indent 4 }}
+data:
+  api: {{ $api.caCert | b64enc }}
+  ldaps: {{ $ldaps.caCert | b64enc }}

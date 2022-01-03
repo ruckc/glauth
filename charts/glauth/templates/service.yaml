@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "glauth.fullname" . }}-ldaps
+  labels:
+    {{- include "glauth.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.services.ldaps.type }}
+  ports:
+    - port: {{ .Values.services.ldaps.port }}
+      targetPort: 10636
+      protocol: TCP
+      name: ldaps
+  selector:
+    {{- include "glauth.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "glauth.fullname" . }}-ldap
+  labels:
+    {{- include "glauth.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.services.ldap.type }}
+  ports:
+    - port: {{ .Values.services.ldap.port }}
+      targetPort: 10389
+      protocol: TCP
+      name: ldap
+  selector:
+    {{- include "glauth.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "glauth.fullname" . }}-https
+  labels:
+    {{- include "glauth.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.services.https.type }}
+  ports:
+    - port: {{ .Values.services.https.port }}
+      targetPort: 8443
+      protocol: TCP
+      name: https
+  selector:
+    {{- include "glauth.selectorLabels" . | nindent 4 }}
