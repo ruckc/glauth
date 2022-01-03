@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  glauth:
+  - apiVersion: v2
+    appVersion: v0.1.1
+    created: "2022-01-03T18:10:24.999762328Z"
+    description: A Helm chart for Kubernetes
+    digest: 223555389986c35834425a49e7c851241048f7cefd45ce9b89213dd54807660f
+    name: glauth
+    type: application
+    urls:
+    - https://github.com/ruckc/glauth/releases/download/glauth-0.1.0/glauth-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-01-03T18:10:24.999767728Z"
